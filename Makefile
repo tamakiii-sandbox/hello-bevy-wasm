@@ -1,11 +1,15 @@
-.PHONY: help build build-wasm serve clean install-deps
+.PHONY: help setup teardown build build-wasm serve clean
 
 help:
 	@cat $(firstword $(MAKEFILE_LIST))
 
-install-deps:
+setup:
 	cargo install wasm-pack
 	cargo install basic-http-server
+
+teardown:
+	# uninstall wasm-pack
+	# uninstall basic-http-server
 
 build:
 	cargo build
