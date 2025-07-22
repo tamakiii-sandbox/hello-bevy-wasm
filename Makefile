@@ -9,5 +9,5 @@ build: \
 clean:
 	cargo clean
 
-target: src/lib.rs
+target: src
 	cargo build

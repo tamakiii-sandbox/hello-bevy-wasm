@@ -9,5 +9,5 @@ build: \
 clean:
 	rm -rf pkg
 
-pkg: src/lib.rs
+pkg: src
 	wasm-pack build --target web --out-dir pkg
