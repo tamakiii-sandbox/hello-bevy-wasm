@@ -4,10 +4,10 @@ help:
 	@cat $(firstword $(MAKEFILE_LIST))
 
 build: \
-	pkg
+	wasm/pkg
 
 clean:
-	rm -rf pkg
+	rm -rf wasm/pkg
 
-pkg: src
-	wasm-pack build --target web --out-dir pkg
+wasm/pkg: src
+	wasm-pack build --target web --out-dir $@
