@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello Bevy WASM</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #bevy {
+            width: 800px;
+            height: 600px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bevy"></canvas>
+    <script type="module">
+        import init from './pkg/hello_bevy_wasm.js';
+        init();
+    </script>
+</body>
+</html>

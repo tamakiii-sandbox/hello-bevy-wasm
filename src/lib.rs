@@ -1,6 +1,8 @@
 use bevy::prelude::*;
+use wasm_bindgen::prelude::*;
 
-fn main() {
+#[wasm_bindgen(start)]
+pub fn run() {
     App::new()
         .add_plugins(DefaultPlugins.set(WindowPlugin {
             primary_window: Some(Window {
@@ -14,20 +16,21 @@ fn main() {
         .run();
 }
 
-fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    commands.spawn(Camera2dBundle::default());
+fn setup(mut commands: Commands) {
+    commands.spawn(Camera2d);
     
-    commands.spawn(TextBundle::from_section(
-        "Hello, Bevy WASM!",
-        TextStyle {
+    commands.spawn((
+        Text::new("Hello, Bevy WASM!"),
+        TextFont {
             font_size: 40.0,
-            color: Color::WHITE,
             ..default()
         },
-    ).with_style(Style {
-        position_type: PositionType::Absolute,
-        top: Val::Px(50.0),
-        left: Val::Px(50.0),
-        ..default()
-    }));
+        TextColor(Color::WHITE),
+        Node {
+            position_type: PositionType::Absolute,
+            top: Val::Px(50.0),
+            left: Val::Px(50.0),
+            ..default()
+        },
+    ));
 }
