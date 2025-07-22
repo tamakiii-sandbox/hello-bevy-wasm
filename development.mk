@@ -12,12 +12,12 @@ teardown:
 	rm -rf .cargo
 
 serve:
-	basic-http-server .
+	basic-http-server wasm
 
 serve-watch:
 	@echo "Starting development server with hot reload..."
 	@echo "The server will rebuild WASM when Rust source files change"
-	cargo-watch -i pkg/ -x 'build --target wasm32-unknown-unknown' -s 'make -C . -f wasm.mk build' -s 'basic-http-server .' --no-restart
+	cargo-watch -i wasm/ -x 'build --target wasm32-unknown-unknown' -s 'make -C . -f wasm.mk build' -s 'basic-http-server wasm' --no-restart
 
 .cargo:
 	cargo install --root $@ wasm-pack
